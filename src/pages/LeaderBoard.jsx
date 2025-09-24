@@ -1,9 +1,9 @@
 import { useMemo } from 'react'
-import { useAppStore } from '../store/useAppStore.js'
+import { useGameStore } from '../store.jsx'
 
 export default function LeaderBoard() {
-  const points = useAppStore((s) => s.points)
-  const user = useAppStore((s) => s.user)
+  const points = useGameStore((s) => s.points)
+  const user = useGameStore((s) => s.user)
 
   const rows = useMemo(() => {
     const others = [
