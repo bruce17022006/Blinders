@@ -40,7 +40,6 @@ export default function Home() {
     <main className="mx-auto max-w-7xl px-4">
       <section className="py-8 md:py-12">
         <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-900">Explore the SDGs</h1>
-        <p className="text-center text-gray-600 max-w-2xl mx-auto mb-10">Hover over a goal to zoom in. The app logo slides in from the top on hover. Content is placeholder and can be edited later.</p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 place-items-stretch">
           {items.map((item) => (
