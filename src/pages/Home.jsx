@@ -2,34 +2,34 @@ import { useMemo } from 'react'
 
 const SDG_ITEMS = [
   {
-    id: 1,
-    name: 'No Poverty',
-    desc: 'End poverty in all its forms everywhere.',
-    logo: 'https://sdgs.un.org/sites/default/files/goals/E_SDG_Icons-01.jpg',
+    id: 2,
+    name: 'Zero Hunger',
+    desc: 'End hunger, achieve food security and improved nutrition and promote sustainable agriculture.',
+    logo: 'https://sdgs.un.org/sites/default/files/goals/E_SDG_Icons-02.jpg',
   },
   {
-    id: 3,
-    name: 'Good Health',
-    desc: 'Ensure healthy lives and promote well-being for all.',
-    logo: 'https://sdgs.un.org/sites/default/files/goals/E_SDG_Icons-03.jpg',
-  },
-  {
-    id: 4,
-    name: 'Quality Education',
-    desc: 'Inclusive and equitable quality education for all.',
-    logo: 'https://sdgs.un.org/sites/default/files/goals/E_SDG_Icons-04.jpg',
+    id: 6,
+    name: 'Clean Water And Sanitation',
+    desc: 'Ensure availability and sustainable management of water and sanitation for all.',
+    logo: 'https://sdgs.un.org/sites/default/files/goals/E_SDG_Icons-06.jpg',
   },
   {
     id: 7,
-    name: 'Affordable Energy',
-    desc: 'Affordable, reliable and sustainable energy.',
+    name: 'Affordable And Clean Energy',
+    desc: 'Ensure access to affordable, reliable, sustainable and modern energy for all.',
     logo: 'https://sdgs.un.org/sites/default/files/goals/E_SDG_Icons-07.jpg',
   },
   {
-    id: 13,
-    name: 'Climate Action',
-    desc: 'Urgent action to combat climate change.',
-    logo: 'https://sdgs.un.org/sites/default/files/goals/E_SDG_Icons-13.jpg',
+    id: 12,
+    name: 'Responsible Consumption And Production',
+    desc: 'Ensure sustainable consumption and production patterns.',
+    logo: 'https://sdgs.un.org/sites/default/files/goals/E_SDG_Icons-12.jpg',
+  },
+  {
+    id: 14,
+    name: 'Life Below Water',
+    desc: 'Conserve and sustainably use the oceans, seas and marine resources for sustainable development.',
+    logo: 'https://sdgs.un.org/sites/default/files/goals/E_SDG_Icons-14.jpg',
   },
 ]
 
@@ -42,8 +42,8 @@ export default function Home() {
         <h1 className="text-3xl md:text-4xl font-bold text-center mb-8 text-gray-900">Explore the SDGs</h1>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 place-items-stretch">
-          {items.map((item) => (
-            <div key={item.id} className="group relative bg-white rounded-xl shadow-sm ring-1 ring-gray-200 overflow-hidden h-[420px] flex flex-col transform transition-transform duration-300 hover:scale-105">
+          {items.map((item, idx) => (
+            <div key={`${item.id}-${idx}`} className="group relative bg-white rounded-xl shadow-sm ring-1 ring-gray-200 overflow-hidden h-[420px] flex flex-col transform transition-transform duration-300 hover:scale-105">
               <div className="absolute inset-x-0 -top-16 flex justify-center opacity-0 -translate-y-6 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-4">
                 <img src="/vite.svg" alt="App mark" className="h-10 w-10 drop-shadow" />
               </div>
