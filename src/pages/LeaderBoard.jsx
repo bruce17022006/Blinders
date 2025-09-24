@@ -33,8 +33,8 @@ export default function LeaderBoard() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-200">
-              {rows.map((r) => (
-                <tr key={r.rank} className="hover:bg-gray-50">
+              {rows.map((r, idx) => (
+                <tr key={`${r.name}-${r.points}-${idx}`} className="hover:bg-gray-50">
                   <td className="px-4 py-3 text-sm text-gray-900">{r.rank}</td>
                   <td className="px-4 py-3 text-sm text-gray-700">{r.name}</td>
                   <td className="px-4 py-3 text-sm text-gray-900 text-right font-semibold">{r.points}</td>
