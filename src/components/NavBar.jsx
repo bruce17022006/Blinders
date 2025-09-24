@@ -8,7 +8,6 @@ export default function NavBar() {
     <header className="w-full border-b bg-white/80 backdrop-blur sticky top-0 z-50">
       <div className="mx-auto max-w-7xl px-4 py-3 flex items-center justify-between">
         <Link to="/" className="flex items-center gap-2 font-semibold text-gray-900">
-          <img src="/vite.svg" alt="App logo" className="h-6 w-6" />
           <span>SDG Explorer</span>
         </Link>
 
