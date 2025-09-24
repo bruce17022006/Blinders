@@ -16,7 +16,7 @@ export default function NavBar() {
           <NavLink to="/home" className={({ isActive }) => `text-sm font-medium ${isActive ? 'text-indigo-600' : 'text-gray-700 hover:text-gray-900'}`}>Home</NavLink>
           <NavLink to="/leaderboard" className={({ isActive }) => `text-sm font-medium ${isActive ? 'text-indigo-600' : 'text-gray-700 hover:text-gray-900'}`}>LeaderBoard</NavLink>
           <NavLink to="/profile" className={({ isActive }) => `text-sm font-medium ${isActive ? 'text-indigo-600' : 'text-gray-700 hover:text-gray-900'}`}>Profile</NavLink>
-          <NavLink to="/game" className={({ isActive }) => `text-sm font-medium ${isActive ? 'text-indigo-600' : 'text-gray-700 hover:text-gray-900'}`}>Game</NavLink>
+          {/* <NavLink to="/game" className={({ isActive }) => `text-sm font-medium ${isActive ? 'text-indigo-600' : 'text-gray-700 hover:text-gray-900'}`}>Game</NavLink> */}
         </nav>
       </div>
     </header>

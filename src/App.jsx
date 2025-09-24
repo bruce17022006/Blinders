@@ -29,26 +29,45 @@ export default function App() {
 
   // This useEffect is the "gatekeeper". It runs once when the app loads.
   useEffect(() => {
+    let cancelled = false;
     const unsubscribe = onAuthStateChanged(auth, async (authUser) => {
+      if (cancelled) return;
+
       if (authUser) {
         // User is logged in to Firebase, now get their data from Firestore
-        const userDocRef = doc(db, 'users', authUser.uid);
-        const userDoc = await getDoc(userDocRef);
-        if (userDoc.exists()) {
-          setUser({ uid: authUser.uid, ...userDoc.data() });
-        } else {
-          // User exists in auth but not firestore, log them out.
-          clearUser();
+        try {
+          const userDocRef = doc(db, 'users', authUser.uid);
+          const userDoc = await getDoc(userDocRef);
+          if (cancelled) return;
+
+          if (userDoc.exists()) {
+            setUser({ uid: authUser.uid, ...userDoc.data() });
+          } else {
+            // User exists in auth but not firestore, clear local user
+            clearUser();
+          }
+        } catch (err) {
+          // Firestore may abort requests during HMR or network issues — handle gracefully
+          if (err && err.name === 'AbortError') {
+            console.warn('Firestore request was aborted:', err);
+          } else {
+            console.error('Error fetching user document:', err);
+          }
+          if (!cancelled) clearUser();
         }
       } else {
         // No user is logged in
-        clearUser();
+        if (!cancelled) clearUser();
       }
-      setLoading(false); // Done checking, we can show the app now
+
+      if (!cancelled) setLoading(false); // Done checking, we can show the app now
     });
 
     // Cleanup the listener when the app unmounts
-    return () => unsubscribe();
+    return () => {
+      cancelled = true;
+      try { unsubscribe(); } catch {}
+    };
   }, [setUser, clearUser]);
 
   // While checking, show a loading screen

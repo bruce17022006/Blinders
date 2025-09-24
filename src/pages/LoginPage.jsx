@@ -28,15 +28,25 @@ export default function LoginPage() {
         const user = userCredential.user;
 
         // Fetch user data from Firestore
-        const userDocRef = doc(db, 'users', user.uid);
-        const userDoc = await getDoc(userDocRef);
+        try {
+          const userDocRef = doc(db, 'users', user.uid);
+          const userDoc = await getDoc(userDocRef);
 
-        if (userDoc.exists()) {
-          // Put user data into Zustand store
-          setUser({ uid: user.uid, ...userDoc.data() });
-          navigate('/home'); // Redirect to dashboard after login
-        } else {
-          setError('No user data found.');
+          if (userDoc.exists()) {
+            // Put user data into Zustand store
+            setUser({ uid: user.uid, ...userDoc.data() });
+            navigate('/home'); // Redirect to dashboard after login
+          } else {
+            setError('No user data found.');
+          }
+        } catch (dbErr) {
+          if (dbErr && dbErr.name === 'AbortError') {
+            console.warn('Firestore getDoc aborted during login:', dbErr);
+            setError('Login interrupted. Please try again.');
+          } else {
+            console.error('Error fetching user doc on login:', dbErr);
+            setError(dbErr.message || 'Failed to load user data.');
+          }
         }
       } catch (err) {
         setError(err.message);

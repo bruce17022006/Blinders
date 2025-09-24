@@ -1,4 +1,4 @@
-import { initializeApp } from "firebase/app";
+import { initializeApp, getApps, getApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
@@ -14,8 +14,8 @@ const firebaseConfig = {
   measurementId: "G-GX8FCW6XB3"
 };
 
-// Initialize the Firebase app with your configuration
-const app = initializeApp(firebaseConfig);
+// Initialize the Firebase app only once to avoid duplicate-app errors during HMR
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 
 // Get a reference to the Authentication service
 export const auth = getAuth(app);
