@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+:root {
+  --app-bg: conic-gradient(at 20% 10%, #ffffff, #f8fafc 30%, #eef2ff 60%, #ffffff 100%);
+}
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  background: var(--app-bg);
+}
+
+/***** Animations *****/
+@keyframes slide-down {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.slide-down {
+  animation: slide-down 300ms ease-out forwards;
+}
