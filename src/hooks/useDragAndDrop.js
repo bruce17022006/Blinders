@@ -49,6 +49,12 @@ export function useDragAndDrop() {
     );
   }, []);
 
+  // --- THIS IS THE NEW FUNCTION ---
+  // It resets the baskets state to its initial empty state.
+  const resetBaskets = useCallback(() => {
+    setBaskets([{ id: 'basket-1', items: [] }]);
+  }, []);
+
   return useMemo(
     () => ({
       dragState,
@@ -58,7 +64,9 @@ export function useDragAndDrop() {
       handleDrop,
       handleRemoveIngredient,
       updateDragPosition,
+      resetBaskets, // <-- The new function is now exported
     }),
-    [dragState, baskets, handleDragStart, handleDragEnd, handleDrop, handleRemoveIngredient, updateDragPosition]
+    [dragState, baskets, handleDragStart, handleDragEnd, handleDrop, handleRemoveIngredient, updateDragPosition, resetBaskets]
   );
 }
+
