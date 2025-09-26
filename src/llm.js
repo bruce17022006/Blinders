@@ -1,6 +1,6 @@
 // --- The API Key You Just Created ---
 // PASTE YOUR KEY HERE. This is the only place it needs to go.
-const API_KEY = "AIzaSyCF-NrhXH6tNOtc3jDixYZnhpUh_87n_n8";
+const API_KEY = "AIzaSyCF-NrhXH6tggaVNOtc3jDixYZnhpUh_87n_n8";
 
 const promptTemplate = `
 You are a game designer for an educational game about nutrition called "Balanced Bites". Your task is to generate the data for a single game level. The difficulty of the level is determined by the player's current level, which is {{level}}.
